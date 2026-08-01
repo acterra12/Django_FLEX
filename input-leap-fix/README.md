@@ -75,8 +75,22 @@ If mouse/keyboard cross the machines but **clipboard does not**, run:
 ./04-fix-clipboard.sh
 ```
 
-On Fedora this is usually **Wayland**: Input Leap still cannot sync clipboards under Wayland ([upstream #1698](https://github.com/input-leap/input-leap/issues/1698)).  
-Fix: at the login screen choose **GNOME on Xorg** / **Plasma (X11)**, log in, confirm `echo $XDG_SESSION_TYPE` prints `x11`, restart Input Leap.
+On Fedora, **GNOME** and **GNOME Classic** are both Wayland. Input Leap cannot sync clipboards on Wayland ([upstream #1698](https://github.com/input-leap/input-leap/issues/1698)).
+
+If the login gear has no **GNOME on Xorg**:
+
+```bash
+# Fedora 41/42 (official packages)
+sudo dnf install -y gnome-session-xsession gnome-classic-session-xsession
+# log out → gear → GNOME on Xorg → echo $XDG_SESSION_TYPE  # x11
+
+# Fedora 43+ (official Xorg GNOME removed — community COPR)
+sudo dnf copr enable frantisekz/GNOME-X11 -y
+sudo dnf update -y
+sudo dnf install -y xorg-x11-xinit gnome-session-xsession gnome-classic-session-xsession
+```
+
+Or install an X11 desktop Fedora still ships (`@mate-desktop-environment` / `@cinnamon-desktop-environment`) and run Input Leap there.
 
 Clipboard sharing must also be enabled in Input Leap preferences on **both** machines.
 
