@@ -67,9 +67,22 @@ Most GUI server setups leave client-cert checking **off**, so step 2 alone is en
 3. Toggle **Enable SSL** off → Apply → on → Apply on both machines if the `.pem` was missing.
 4. Confirm both machines use the same Input Leap major version when possible.
 
+## Copy-paste not working
+
+If mouse/keyboard cross the machines but **clipboard does not**, run:
+
+```bash
+./04-fix-clipboard.sh
+```
+
+On Fedora this is usually **Wayland**: Input Leap still cannot sync clipboards under Wayland ([upstream #1698](https://github.com/input-leap/input-leap/issues/1698)).  
+Fix: at the login screen choose **GNOME on Xorg** / **Plasma (X11)**, log in, confirm `echo $XDG_SESSION_TYPE` prints `x11`, restart Input Leap.
+
+Clipboard sharing must also be enabled in Input Leap preferences on **both** machines.
+
 ## Common gotchas after a laptop migration
 
 - Fresh home → empty SSL dir → no trust → secure socket fails.
 - Screen name changed (`ascerra-dev` vs old hostname) → server rejects after TLS succeeds; rename in the server layout.
 - Server still has the old client name only — add/rename the screen on the server.
-- Wayland: Input Leap needs X11/XWayland permissions; SSL errors are separate from that, but if TLS works and the cursor still does not move, check accessibility / input permissions next.
+- Wayland: mouse/keyboard may work via portals, but **copy-paste will not** until you switch to X11.
