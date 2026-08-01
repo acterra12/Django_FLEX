@@ -90,12 +90,15 @@ sudo dnf install -y gnome-session-xsession gnome-classic-session-xsession
 #   RECOVERY-BLACK-SCREEN.md
 ```
 
-**Preferred on Fedora 44:** keep GNOME Wayland for daily use; install a separate X11 desktop only when you need Input Leap clipboard:
+**Preferred on Fedora 44 (safe):** keep GNOME Wayland for daily use; use MATE (X11) only when you need Input Leap clipboard:
 
 ```bash
-sudo dnf5 install -y @mate-desktop-environment
-# log out → gear → MATE → start Input Leap there
+./05-safe-clipboard-via-mate.sh
+# or: sudo dnf5 install -y @mate-desktop-environment
+# log out → gear → MATE → echo $XDG_SESSION_TYPE  # x11 → start Input Leap
 ```
+
+Do **not** re-enable `frantisekz/GNOME-X11` — that COPR broke GDM on this machine.
 
 Clipboard sharing must also be enabled in Input Leap preferences on **both** machines.
 
