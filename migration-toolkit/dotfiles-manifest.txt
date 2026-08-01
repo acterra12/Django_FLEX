@@ -1,0 +1,13 @@
+# Dotfiles / config that should survive migration
+.bashrc
+.profile
+.gitconfig
+.ssh
+.config
+.local/share
+.nvm
+.npm
+cursor
+.cursor
+.config/Cursor
+.config/cursor

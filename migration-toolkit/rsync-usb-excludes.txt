@@ -1,0 +1,31 @@
+# USB exports are usually stricter (capacity). Inherit home excludes + extras.
+.cache/
+**/.cache/
+npm-cache/
+.npm/_cacache/
+.local/share/Trash/
+.local/share/containers/storage/
+.local/share/Steam/
+.steam/
+.var/app/*/cache/
+**/node_modules/
+**/.pnpm-store/
+**/__pycache__/
+**/.venv/
+**/venv/
+**/.tox/
+**/dist/
+**/build/
+.docker/
+snap/
+.tmp/
+tmp/
+*.tmp
+*.swp
+.DS_Store
+migration-incoming/
+
+# Skip bulky media by default on USB; remove lines if you need them
+# Music/
+# Videos/
+# Pictures/

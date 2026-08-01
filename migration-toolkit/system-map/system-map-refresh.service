@@ -1,0 +1,7 @@
+[Unit]
+Description=Refresh SYSTEM-MAP.md
+
+[Service]
+Type=oneshot
+# Adjust ExecStart to where you keep the toolkit
+ExecStart=%h/migration-toolkit/system-map/refresh-system-map.sh

@@ -1,0 +1,18 @@
+# AGENTS.md
+
+## Machine
+
+- Host: {{hostname}}
+- User: {{user}}
+- Role: primary dev laptop
+
+## Layout
+
+- Projects: ~/development
+- Migration toolkit: ~/Downloads/transfer or ~/migration-toolkit
+- Staging: ~/migration-incoming/home-mirror
+
+## Rules
+
+- Prefer existing project conventions
+- Do not wipe migration staging until verify passes

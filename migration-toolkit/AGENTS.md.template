@@ -1,0 +1,9 @@
+# AGENTS.md
+
+Copy to a project or home AGENTS.md and fill in.
+
+## Migration
+
+- Staging: ~/migration-incoming/home-mirror
+- Toolkit: ~/Downloads/transfer
+- Always run ./00-diagnose.sh before ./03-import-home.sh

@@ -1,0 +1,50 @@
+# Caches / rebuildable
+.cache/
+**/.cache/
+npm-cache/
+.npm/_cacache/
+.local/share/Trash/
+.local/share/containers/storage/
+.local/share/Steam/
+.steam/
+.var/app/*/cache/
+**/node_modules/
+**/.pnpm-store/
+**/__pycache__/
+**/.venv/
+**/venv/
+**/.tox/
+**/.mypy_cache/
+**/.pytest_cache/
+**/dist/
+**/build/
+.target/
+**/.gradle/
+**/.cargo/registry/
+**/.cargo/git/
+.rustup/toolchains/
+
+# Huge VM / container images (re-pull separately if needed)
+.local/share/libvirt/images/
+.docker/
+snap/
+
+# Transient
+.tmp/
+tmp/
+*.tmp
+*.swp
+.DS_Store
+
+# Do not clobber the destination migration staging area
+migration-incoming/
+
+# Optional: uncomment to skip browser profiles (large; re-login often easier)
+# .mozilla/
+# .config/google-chrome/
+# .config/chromium/
+# .config/BraveSoftware/
+
+# Optional: skip cloud sync leftovers
+# Dropbox/
+# OneDrive/
