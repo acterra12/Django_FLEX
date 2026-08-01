@@ -30,4 +30,4 @@ echo "  export OLD_HOST=$(whoami)@<one-of: $IP_LIST>"
 echo "  ssh \"\$OLD_HOST\" 'hostname'"
 echo "  ./new-laptop-pull-all.sh"
 echo
-ss -ltnp 2>/dev/null | grep -E ':22\\b' || sudo ss -ltnp | grep -E ':22\\b' || true
+ss -ltnp 2>/dev/null | grep -E '(:22|:ssh)\\b' || sudo ss -ltnp | grep -E '(:22|:ssh)\\b' || true
