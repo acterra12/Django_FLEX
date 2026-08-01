@@ -81,10 +81,11 @@ check_tree() {
   echo
 }
 
-for root in "${SSL_ROOTS[@]:-}"; do
-  [[ -n "${root:-}" ]] || continue
-  check_tree "$root"
-done
+if [[ ${#SSL_ROOTS[@]} -gt 0 ]]; then
+  for root in "${SSL_ROOTS[@]}"; do
+    check_tree "$root"
+  done
+fi
 
 echo "-- Config snippets (server hostname / crypto) --"
 for cfg in \
