@@ -1,0 +1,5 @@
+# Relative to $HOME
+.local/share/gnome-shell/extensions
+.config/autostart
+.fonts
+.local/share/fonts

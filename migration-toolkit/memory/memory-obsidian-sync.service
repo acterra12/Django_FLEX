@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync recalld memories into Obsidian vault
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sync-recalld-to-obsidian.sh

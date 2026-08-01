@@ -1,0 +1,11 @@
+[Unit]
+Description=recalld local memory daemon
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/recalld --config %h/.config/recalld/config.toml
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

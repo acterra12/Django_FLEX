@@ -1,0 +1,4 @@
+# Template — installed to ~/.config/recalld/config.toml
+data_dir = "__HOME__/.local/share/recalld"
+listen = "127.0.0.1:7432"
+log_level = "info"

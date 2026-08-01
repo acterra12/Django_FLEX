@@ -1,0 +1,9 @@
+# Paths relative to $HOME that must exist after import.
+# Adjust to match your old laptop.
+development
+development/work
+development/repomix
+Documents
+Downloads
+.ssh
+.gitconfig
