@@ -110,11 +110,15 @@ EOF
         echo $XDG_SESSION_TYPE   # should print: x11
 EOF
       if [[ "$DO_INSTALL" == "1" ]]; then
-        info "DO_INSTALL=1 set — attempting dnf install"
-        if sudo dnf install -y gnome-session-xsession gnome-classic-session-xsession; then
+        info "DO_INSTALL=1 set — attempting package install"
+        DNF_BIN="$(command -v dnf5 || command -v dnf || true)"
+        if [[ -z "$DNF_BIN" ]]; then
+          warn "Neither dnf5 nor dnf found. Are you on the Fedora laptop host?"
+          warn "Run: cat /etc/os-release; command -v dnf5 dnf"
+        elif sudo "$DNF_BIN" install -y gnome-session-xsession gnome-classic-session-xsession; then
           ok "Packages installed. Log out and pick 'GNOME on Xorg'."
         else
-          warn "dnf install failed. If 'No match', your Fedora release no longer ships Xorg GNOME — use the COPR steps above."
+          warn "install failed. If 'No match', your Fedora release no longer ships Xorg GNOME — use the COPR steps above."
         fi
       else
         echo
