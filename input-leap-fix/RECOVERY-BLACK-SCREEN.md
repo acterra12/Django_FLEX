@@ -42,7 +42,7 @@ You should land on a text login (no GUI). Sign in.
 
 ### C. Live USB rescue (if A/B fail)
 
-Boot a Fedora Workstation live USB → “Troubleshoot” / chroot into the installed system, or mount the root filesystem and use `chroot`. Then run the same undo commands below inside the installed root.
+Use **`RECOVERY-LIVE-USB.md`** (full LUKS unlock + chroot steps). Summary: boot Fedora live USB → unlock disk → chroot → remove COPR → `dnf5 distro-sync` GNOME/GDM → set `multi-user.target` → reboot to text login → re-enable GDM (or switch to MATE/lightdm).
 
 ---
 
