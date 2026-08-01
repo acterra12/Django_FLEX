@@ -84,10 +84,11 @@ If the login gear has no **GNOME on Xorg**:
 sudo dnf install -y gnome-session-xsession gnome-classic-session-xsession
 # log out → gear → GNOME on Xorg → echo $XDG_SESSION_TYPE  # x11
 
-# Fedora 43+ (official Xorg GNOME removed — community COPR)
+# Fedora 43/44 (official Xorg GNOME removed — community COPR)
 sudo dnf copr enable frantisekz/GNOME-X11 -y
 sudo dnf update -y
 sudo dnf install -y xorg-x11-xinit gnome-session-xsession gnome-classic-session-xsession
+# log out → gear → GNOME on Xorg → echo $XDG_SESSION_TYPE  # x11
 ```
 
 Or install an X11 desktop Fedora still ships (`@mate-desktop-environment` / `@cinnamon-desktop-environment`) and run Input Leap there.
