@@ -88,16 +88,18 @@ if [[ "$SESSION" == "wayland" ]]; then
       echo
       fix "Option A — restore GNOME on Xorg via community COPR (Fedora 43/44):"
       cat <<'EOF'
-        sudo dnf copr enable frantisekz/GNOME-X11 -y
-        sudo dnf update -y
-        sudo dnf install -y xorg-x11-xinit gnome-session-xsession gnome-classic-session-xsession
+        # Run in a local Fedora terminal on the laptop (not Cursor cloud).
+        # If `dnf` is missing, use `dnf5` (Fedora 41+).
+        sudo dnf5 copr enable frantisekz/GNOME-X11 -y
+        sudo dnf5 update -y
+        sudo dnf5 install -y xorg-x11-xinit gnome-session-xsession gnome-classic-session-xsession
         # then log out → gear → "GNOME on Xorg"
 EOF
       echo
       fix "Option B — use an X11 desktop that Fedora still ships, e.g.:"
       cat <<'EOF'
-        sudo dnf install -y @mate-desktop-environment
-        # or: sudo dnf install -y @cinnamon-desktop-environment
+        sudo dnf5 install -y @mate-desktop-environment
+        # or: sudo dnf5 install -y @cinnamon-desktop-environment
         # log out → gear → MATE / Cinnamon (X11) → restart Input Leap
 EOF
       echo
@@ -110,15 +112,11 @@ EOF
         echo $XDG_SESSION_TYPE   # should print: x11
 EOF
       if [[ "$DO_INSTALL" == "1" ]]; then
-        info "DO_INSTALL=1 set — attempting package install"
-        DNF_BIN="$(command -v dnf5 || command -v dnf || true)"
-        if [[ -z "$DNF_BIN" ]]; then
-          warn "Neither dnf5 nor dnf found. Are you on the Fedora laptop host?"
-          warn "Run: cat /etc/os-release; command -v dnf5 dnf"
-        elif sudo "$DNF_BIN" install -y gnome-session-xsession gnome-classic-session-xsession; then
+        info "DO_INSTALL=1 set — attempting dnf install"
+        if sudo dnf install -y gnome-session-xsession gnome-classic-session-xsession; then
           ok "Packages installed. Log out and pick 'GNOME on Xorg'."
         else
-          warn "install failed. If 'No match', your Fedora release no longer ships Xorg GNOME — use the COPR steps above."
+          warn "dnf install failed. If 'No match', your Fedora release no longer ships Xorg GNOME — use the COPR steps above."
         fi
       else
         echo
