@@ -84,15 +84,18 @@ If the login gear has no **GNOME on Xorg**:
 sudo dnf install -y gnome-session-xsession gnome-classic-session-xsession
 # log out → gear → GNOME on Xorg → echo $XDG_SESSION_TYPE  # x11
 
-# Fedora 43/44 (official Xorg GNOME removed — community COPR)
-# Use a local Fedora terminal on the laptop (not Cursor cloud). Prefer dnf5 if `dnf` is missing.
-sudo dnf5 copr enable frantisekz/GNOME-X11 -y
-sudo dnf5 update -y
-sudo dnf5 install -y xorg-x11-xinit gnome-session-xsession gnome-classic-session-xsession
-# log out → gear → GNOME on Xorg → echo $XDG_SESSION_TYPE  # x11
+# WARNING (Fedora 43/44): the frantisekz/GNOME-X11 COPR replaces core GNOME/GDM
+# packages and has left some F44 machines on a black screen with "_".
+# Prefer Option B below. If you already hit the black screen, see:
+#   RECOVERY-BLACK-SCREEN.md
 ```
 
-Or install an X11 desktop Fedora still ships (`@mate-desktop-environment` / `@cinnamon-desktop-environment`) and run Input Leap there.
+**Preferred on Fedora 44:** keep GNOME Wayland for daily use; install a separate X11 desktop only when you need Input Leap clipboard:
+
+```bash
+sudo dnf5 install -y @mate-desktop-environment
+# log out → gear → MATE → start Input Leap there
+```
 
 Clipboard sharing must also be enabled in Input Leap preferences on **both** machines.
 
